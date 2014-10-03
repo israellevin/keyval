@@ -1,8 +1,8 @@
 #!/usr/bin/python3
 
 # Default local db for testing, set the env variable to override.
-dbfilename = 'keyval.db'
 dbscheme = 'sqlite'
+dbfilename = 'keyval.db'
 from os import environ
 dburl = environ.get('DATABASE_URL', "%s:///%s" % (dbscheme, dbfilename))
 
@@ -37,11 +37,4 @@ class Value(Base):
         return session.query(cls).all()
 
 if __name__ == '__main__':
-    from os.path import isfile
-    if isfile(dbfilename):
-        if 'y' != input('Delete database and create a new one? (y/N): '):
-            from sys import exit
-            exit(0)
-        from os import remove
-        remove(dbfilename)
     Base.metadata.create_all(bind=engine)

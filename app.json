@@ -1,0 +1,10 @@
+{
+    "name": "keyval",
+    "description": "a demo for simple heroku Python/DB deployment.",
+    "repository": "https://github.com/israellevin/keyval",
+    "keywords": ["heroku", "sqlalchemy", "flask"],
+    "addons": ["heroku-postgresql:hobby-dev"],
+    "scripts": {
+        "postdeploy": "python db.py"
+    }
+}
