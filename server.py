@@ -1,12 +1,17 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 
 import db
 from flask import Flask, abort
+from misaka import html
 app = Flask(__name__)
 app.config.update(
     SECRET_KEY = 'keyval',
     DEBUG = True
 )
+
+@app.route('/')
+def index():
+    with open('README.md') as readme: return html(readme.read())
 
 @app.route('/<key>')
 @app.route('/<key>/<value>')
