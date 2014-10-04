@@ -13,8 +13,8 @@ app.config.update(
 def index():
     with open('README.md') as readme: return html(readme.read())
 
-@app.route('/<key>')
-@app.route('/<key>/<value>')
+@app.route('/<key>/')
+@app.route('/<key>/<value>/')
 def getvalue(key, value=None):
     existing = db.Value.getbykey(key)
     if value is None:
